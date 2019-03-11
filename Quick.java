@@ -1,7 +1,7 @@
 public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
- public static int quickselect(int []data, int k){
+ public static int quickselect(int[] data, int k){
    int output = -1;
    int start = 0;
    int end = data.length - 1;
@@ -20,6 +20,14 @@ public class Quick{
    }
    return data[output];
  }
+
+ public static int[] quicksort(int[] data){
+   for(int i = 0; i < data.length; i++){
+     quickselect(data, i);
+   }
+   return data;
+ }
+
  public static int partition ( int [] data, int start, int end){
    if(end == start){
      return start;

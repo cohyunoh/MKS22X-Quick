@@ -15,7 +15,7 @@ public class Quick{
          end = output;
        }
      }else{
-       found == true;
+       found = true;
      }
    }
    return output;

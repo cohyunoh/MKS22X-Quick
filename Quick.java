@@ -2,7 +2,23 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
  public static int quickselect(int []data, int k){
-
+   int output = -1;
+   int start = 0;
+   int end = data.length - 1;
+   boolean found = false;
+   while(!found){
+     output = partition(data, start, end);
+     if(output != k){
+       if(output < k){
+         start = output;
+       }else{
+         end = output;
+       }
+     }else{
+       found == true;
+     }
+   }
+   return output;
  }
  public static int partition ( int [] data, int start, int end){
    if(end == start){

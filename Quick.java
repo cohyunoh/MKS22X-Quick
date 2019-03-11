@@ -10,15 +10,15 @@ public class Quick{
      output = partition(data, start, end);
      if(output != k){
        if(output < k){
-         start = output;
+         start = output + 1;
        }else{
-         end = output;
+         end = output - 1;
        }
      }else{
        found = true;
      }
    }
-   return output;
+   return data[output];
  }
  public static int partition ( int [] data, int start, int end){
    if(end == start){

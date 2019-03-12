@@ -23,8 +23,16 @@ public class Quick{
  }
 
  public static int[] quicksort(int[] data){
-   for(int i = 0; i < data.length; i++){
-     quickselect(data, i);
+   return quickH(data, 0, data.length - 1);
+ }
+
+ private static int[] quickH(int[] data, int start, int end){
+   if(end - start == 0){
+     return data;
+   }else{
+     int newpivot = partition(data, start, end);
+     quickH(data, start, newpivot - 1);
+     quickH(data, newpivot + 1, end);
    }
    return data;
  }

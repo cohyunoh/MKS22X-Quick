@@ -17,15 +17,16 @@ public class tester{
   }
   public static void main(String[] args) {
     int[] ary = {1 , 5 , 1 , 5 , 5 , 7 , 7};
+    /*
     System.out.println(Quick.partition(ary, 0 , 6));
     System.out.println(toString(ary));
-    /*
+    */
     System.out.println(Quick.quickselect(ary , 0 ));
     System.out.println(Quick.quickselect(ary , 1 ));
     System.out.println(Quick.quickselect(ary , 2 ));
     System.out.println(Quick.quickselect(ary , 3 ));
     System.out.println(Quick.quickselect(ary , 4 ));
     System.out.println(Quick.quickselect(ary , 5 ));
-    */
+    System.out.println(Quick.quickselect(ary , 6 ));
   }
 }

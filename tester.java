@@ -16,18 +16,9 @@ public class tester{
     return true;
   }
   public static void main(String[] args) {
-    if(args[0] != null){
-      int len = Integer.parseInt(args[0]);
-      int[] ary = new int[len];
-      Random nums = new Random();
-      for(int i = 0; i < len; i++){
-        ary[i] = nums.nextInt() / 100000000;
-      }
-      System.out.println(toString(ary));
-      System.out.println(test(Quick.quicksort(ary)));
-      System.out.println(toString(ary));
-    }
-
+    int[] ary = {1 , 5 , 1 , 5 , 5 , 7 , 7};
+    System.out.println(Quick.partition(ary, 0 , 6));
+    System.out.println(toString(ary));
     /*
     System.out.println(Quick.quickselect(ary , 0 ));
     System.out.println(Quick.quickselect(ary , 1 ));

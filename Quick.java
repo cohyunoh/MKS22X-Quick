@@ -1,3 +1,4 @@
+import java.util.Random;
 public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
@@ -32,13 +33,14 @@ public class Quick{
    if(end == start){
      return start;
    }
-   int pivotIndex = ((int)(Math.random() * 10) % (end + 1 - start)) + start;
+   int pivotIndex = (start + end) / 2;
    int first =  data[start];
    data[start] = data[pivotIndex];
    data[pivotIndex] = first;
    pivotIndex = start;
    int tempStart = start + 1;
    int tempEnd = end;
+   Random randnum = new Random();
    //System.out.println(pivotIndex);
    while(tempStart != tempEnd){
      //System.out.println("Start: " + tempStart);
@@ -49,8 +51,18 @@ public class Quick{
        data[tempStart] = data[tempEnd];
        data[tempEnd] = temp;
        tempEnd --;
-     }else if(data[tempStart] <= data[pivotIndex]){
+     }else if(data[tempStart] < data[pivotIndex]){
        tempStart ++;
+     }else if(data[tempStart] == data[pivotIndex]){
+       int place = randnum.nextInt() % 2;
+       if(place == 0){
+         int temp = data[tempStart];
+         data[tempStart] = data[tempEnd];
+         data[tempEnd] = temp;
+         tempEnd --;
+       }else{
+         tempStart ++;
+       }
      }
      //System.out.println("Start: " + tempStart);
      //System.out.println("End: " + tempEnd);

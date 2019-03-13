@@ -52,6 +52,8 @@ public class Quick{
  */
 
  private static int[] quickH(int[] data, int start, int end){
+   //if the two start and end are equal then that means that the element that is in this
+   //index is in the right place
    if(end == start){
      return data;
    }else{
@@ -59,45 +61,64 @@ public class Quick{
      //System.out.println(toString(data));
     // System.out.println(start);
      //System.out.println(end);
+     //get the newpivot by retrieving the value from a partitioned list from start to end
      int newpivot = partition(data, start, end);
+     //perform another partition with the less half of the values
      if(newpivot - 1 > start){
        quickH(data, start, newpivot - 1);
      }
+     //perform another partition with great hald of the values
      if(newpivot + 1 < end){
        quickH(data, newpivot + 1, end);
      }
    }
+
    return data;
  }
 
  public static int partition ( int [] data, int start, int end){
+   //if the two are equal then just return the start index
    if(end == start){
      return start;
    }
+   //the pivotIndex is the median value from start to end
    int pivotIndex = (start + end) / 2;
-   int first =  data[start];
+   //swap the first value with the pivot value
+   int temp =  data[start];
    data[start] = data[pivotIndex];
-   data[pivotIndex] = first;
+   data[pivotIndex] = temp;
    pivotIndex = start;
+   //this will be the start that will change around (it is the value after the pivot)
    int tempStart = start + 1;
+   //this will be the end that will change around
    int tempEnd = end;
+   //this will be used in the case of duplicates
    Random randnum = new Random();
    //System.out.println(pivotIndex);
+   //keep on swapping until the two ends meet each other, which means that the list is split up
+   //between values greater than the pivot and less than the pivot
    while(tempStart != tempEnd){
      //System.out.println("Start: " + tempStart);
      //System.out.println("End: " + tempEnd);
      //System.out.println(toString(data));
+
+     //if the value at the start is greater than the pivot value then swap it with the end value
+     //of the list and move the tempEnd down 1
      if(data[tempStart] > data[pivotIndex]){
-       int temp = data[tempStart];
+       temp = data[tempStart];
        data[tempStart] = data[tempEnd];
        data[tempEnd] = temp;
        tempEnd --;
+     //if the value at the start is less than the pivot value then move the tempStart up 1 since
+     //it is in the correct position
      }else if(data[tempStart] < data[pivotIndex]){
        tempStart ++;
+     //if the tempStart value and the pivot value equal then give it a 50/50 chance that it will
+     //remain where it is or swap with the end
      }else if(data[tempStart] == data[pivotIndex]){
        int place = randnum.nextInt() % 2;
        if(place == 0){
-         int temp = data[tempStart];
+         temp = data[tempStart];
          data[tempStart] = data[tempEnd];
          data[tempEnd] = temp;
          tempEnd --;
@@ -109,15 +130,19 @@ public class Quick{
      //System.out.println("End: " + tempEnd);
      //System.out.println(toString(data));
    }
+   //loop the through list and see where there is a value greater than the pivot
+   //once found swap the pivot from the start with the value before the first greater
+   //number in the list
    for(int c = start; c < end + 1; c++){
      if(data[c] > data[pivotIndex]){
-       int temp = data[c - 1];
+       temp = data[c - 1];
        data[c - 1] = data[pivotIndex];
        data[pivotIndex] = temp;
        return c - 1;
      }
    }
-   int temp = data[end];
+   //if it is the greatest then swap it with the end
+   temp = data[end];
    data[end] = data[pivotIndex];
    data[pivotIndex] = temp;
    return end;

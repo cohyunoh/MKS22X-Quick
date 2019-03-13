@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 public class tester{
   private static String toString(int[] ary){
     String ans = "";
@@ -17,6 +18,7 @@ public class tester{
   }
   public static void main(String[] args) {
     int[] ary = {1,5,1,5,5,7,7};
+    int[] aryCopy = {1,5,1,5,5,7,7};
     /*
     System.out.println(Quick.partition(ary, 0 , 6));
     System.out.println(toString(ary));
@@ -30,6 +32,14 @@ public class tester{
     System.out.println(Quick.quickselect(ary , 5 ));
     System.out.println(Quick.quickselect(ary , 6 ));
     */
-    System.out.println(toString(Quick.quicksort(ary)));
+    if(args[0] == null){
+      System.out.print("Please Enter 0 or 1");
+    }else if(Integer.parseInt(args[0]) == 0){
+      Quick.quicksort(ary);
+      System.out.println(toString(ary));
+    }else if(Integer.parseInt(args[0]) == 1){
+      Arrays.sort(aryCopy);
+      System.out.println(toString(aryCopy));
+    }
   }
 }

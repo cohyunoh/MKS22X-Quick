@@ -16,9 +16,15 @@ public class tester{
     }
     return true;
   }
+
   public static void main(String[] args) {
-    int[] ary = {1,5,1,5,5,7,7};
-    int[] aryCopy = {1,5,1,5,5,7,7};
+    Random rand = new Random();
+    int[] ary =  new int[Math.abs(rand.nextInt()) / 100];
+    System.out.println("ArrayLength: " + ary.length);
+    for(int i = 0; i < ary.length; i++){
+      ary[i] = rand.nextInt();
+    }
+    int[] aryCopy = ary;
     /*
     System.out.println(Quick.partition(ary, 0 , 6));
     System.out.println(toString(ary));
@@ -35,11 +41,14 @@ public class tester{
     if(args[0] == null){
       System.out.print("Please Enter 0 or 1");
     }else if(Integer.parseInt(args[0]) == 0){
+      Long start = System.currentTimeMillis();
       Quick.quicksort(ary);
-      System.out.println(toString(ary));
-    }else if(Integer.parseInt(args[0]) == 1){
+      Long end = System.currentTimeMillis();
       Arrays.sort(aryCopy);
-      System.out.println(toString(aryCopy));
+      Long end1 = System.currentTimeMillis();
+      System.out.println(end - start);
+      System.out.println(end1 - end);
+      System.out.println(Arrays.equals(ary, aryCopy));
     }
   }
 }

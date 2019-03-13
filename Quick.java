@@ -38,10 +38,10 @@ public class Quick{
    if(end == start){
      return data;
    }else{
-     System.out.println("Pass");
-     System.out.println(toString(data));
-     System.out.println(start);
-     System.out.println(end);
+     //System.out.println("Pass");
+     //System.out.println(toString(data));
+    // System.out.println(start);
+     //System.out.println(end);
      int newpivot = partition(data, start, end);
      if(newpivot - 1 > start){
        quickH(data, start, newpivot - 1);

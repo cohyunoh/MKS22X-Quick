@@ -16,7 +16,7 @@ public class tester{
     return true;
   }
   public static void main(String[] args) {
-    int[] ary = {1 , 5 , 1 , 5 , 5 , 7 , 7};
+    int[] ary = {1,5,1,5,5,7,7};
     /*
     System.out.println(Quick.partition(ary, 0 , 6));
     System.out.println(toString(ary));

@@ -26,13 +26,29 @@ public class Quick{
    return quickH(data, 0, data.length - 1);
  }
 
+ private static String toString(int[] ary){
+   String ans = "";
+   for(int i = 0; i < ary.length; i++){
+     ans += ary[i] + " ";
+   }
+   return ans;
+ }
+
  private static int[] quickH(int[] data, int start, int end){
-   if(end - start == 0){
+   if(end == start){
      return data;
    }else{
+     System.out.println("Pass");
+     System.out.println(toString(data));
+     System.out.println(start);
+     System.out.println(end);
      int newpivot = partition(data, start, end);
-     quickH(data, start, newpivot - 1);
-     quickH(data, newpivot + 1, end);
+     if(newpivot - 1 > start){
+       quickH(data, start, newpivot - 1);
+     }
+     if(newpivot + 1 < end){
+       quickH(data, newpivot + 1, end);
+     }
    }
    return data;
  }
@@ -68,7 +84,7 @@ public class Quick{
          data[tempStart] = data[tempEnd];
          data[tempEnd] = temp;
          tempEnd --;
-       }else{
+       }else if(place == 1){
          tempStart ++;
        }
      }

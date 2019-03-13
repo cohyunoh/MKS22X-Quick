@@ -140,5 +140,30 @@ public class Quick{
    data[end] = data[pivotIndex];
    data[pivotIndex] = temp;
    return end;
- }
+  }
+
+/*
+  private int[] partitionDutch(int[],int lo, int hi){
+    //if the two are equal then just return the start index
+    if(end == start){
+      return start;
+    }
+    //the pivotIndex is the median value from start to end
+    int pivotIndex = (start + end) / 2;
+    //swap the first value with the pivot value
+    int temp =  data[start];
+    data[start] = data[pivotIndex];
+    data[pivotIndex] = temp;
+    pivotIndex = start;
+    //this will be the start that will change around (it is the value after the pivot)
+    int i = start + 1;
+    //this will be the end that will change around
+    int tempEnd = end;
+    //this will be used to mark the beginning of duplucates
+    int lt = start + 1;
+    //this will be used to mark the end of duplicates
+    int gt = end;
+    while()
+  }
+  */
 }

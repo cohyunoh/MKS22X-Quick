@@ -3,29 +3,45 @@ public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
  public static int quickselect(int[] data, int k){
+   //output will be our answer and will be compared to k
    int output = -1;
+   //this is our initial start
    int start = 0;
+   //this is our initial end
    int end = data.length - 1;
+   //this will tell us if we found the kth lowest term
    boolean found = false;
    while(!found){
+     //output equals a value in the right order after partition from start to end
      output = partition(data, start, end);
+     //if the index of the one sorted value is not equal to k then
+     //check to see if the index is greater or less than k and then
+     //change start and end accordingly.
      if(output != k){
        if(output < k){
+         //if the output is less than k then that means that the value is in the greater
+         //section of the partitioned list
          start = output + 1;
        }else{
+         //if the output is greater than k then that means that the value is in the lesser
+         //section of the partitioned list
          end = output - 1;
        }
      }else{
+       //if they are equal then the kth lowest value has been found
        found = true;
      }
    }
+   //return this values
    return data[output];
  }
 
  public static int[] quicksort(int[] data){
+   //perform recursive helper method with the start and end being the whole list
    return quickH(data, 0, data.length - 1);
  }
 
+/*
  private static String toString(int[] ary){
    String ans = "";
    for(int i = 0; i < ary.length; i++){
@@ -33,6 +49,7 @@ public class Quick{
    }
    return ans;
  }
+ */
 
  private static int[] quickH(int[] data, int start, int end){
    if(end == start){

@@ -72,7 +72,7 @@ public class Quick{
 
  public static int partition ( int [] data, int start, int end){
    //if the two are equal then just return the start index
-   if(end == start){
+   if(end <= start){
      return start;
    }
    //the pivotIndex is the median value from start to end

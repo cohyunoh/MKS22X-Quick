@@ -34,6 +34,7 @@ public class tester{
         System.out.println(size +"\t\t"+MAX+"\t"+1.0*mtime/btime);
       }
       System.out.println();
+      
     }
   }
 }

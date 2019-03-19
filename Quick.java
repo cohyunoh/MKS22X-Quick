@@ -2,6 +2,7 @@ import java.util.Random;
 public class Quick{
   /*return the value that is the kth smallest value of the array.
  */
+ 
  public static int quickselect(int[] data, int k){
    //output will be our answer and will be compared to k
    int output = -1;

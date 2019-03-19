@@ -36,9 +36,10 @@ public class Quick{
    return data[output];
  }
 
- public static int[] quicksort(int[] data){
+ public static void quicksort(int[] data){
    //perform recursive helper method with the start and end being the whole list
-   return quickH(data, 0, data.length - 1);
+   int k = (int)( (float)(data.length) * 0.00005) + 2;
+   quickH(data, 0, data.length - 1, k);
  }
 
 /*
@@ -51,29 +52,27 @@ public class Quick{
  }
  */
 
- private static int[] quickH(int[] data, int start, int end){
+ private static void quickH(int[] data, int start, int end, int k){
    //if the two start and end are equal then that means that the element that is in this
    //index is in the right place
-   if(end == start){
-     return data;
+   if(end - start + 1 <= k){
+     insertionsort(data, start, end);
    }else{
      //System.out.println("Pass");
      //System.out.println(toString(data));
-    // System.out.println(start);
+     // System.out.println(start);
      //System.out.println(end);
      //get the newpivot by retrieving the value from a partitioned list from start to end
      int newpivot = partition(data, start, end);
      //perform another partition with the less half of the values
      if(newpivot - 1 > start){
-       quickH(data, start, newpivot - 1);
+       quickH(data, start, newpivot - 1, k);
      }
      //perform another partition with great hald of the values
      if(newpivot + 1 < end){
-       quickH(data, newpivot + 1, end);
+       quickH(data, newpivot + 1, end, k);
      }
    }
-
-   return data;
  }
 
  public static int partition ( int [] data, int start, int end){
@@ -146,5 +145,17 @@ public class Quick{
    data[end] = data[pivotIndex];
    data[pivotIndex] = temp;
    return end;
+ }
+
+ private static void insertionsort(int[] data, int lo, int hi){
+   for (int i = lo; i < hi + 1; ++i) {
+     int original = data[i];
+     int c = i - 1;
+     while (c >= lo && data[c] > original) {
+       data[c + 1] = data[c];
+       c--;
+     }
+     data[c + 1] = original;
+   }
  }
 }
